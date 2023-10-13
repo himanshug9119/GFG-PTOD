@@ -1,0 +1,21 @@
+class Solution{
+    private:
+    // Function to search a node in BST.
+    void inorder(struct Node * root,int &n,int input){
+        if(root){
+            inorder(root->right,n , input);
+            if(input == root->data){
+                n = root->data;
+            }else if(n==-1 && root->data < input){
+                n = root->data;
+            }
+            inorder(root->left, n,input);
+        }
+    }
+    public:
+    int floor(Node* root, int x) {
+        int n = -1;
+        inorder(root,n,x);
+        return n;
+    }
+};
